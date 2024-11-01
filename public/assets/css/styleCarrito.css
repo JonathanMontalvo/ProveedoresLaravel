@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+header {
+    background: #343a40;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.navbar-brand img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.dropdown-menu {
+    white-space: nowrap;
+    max-width: 200px;
+    overflow-x: hidden;
+}
+
+.dropdown-menu a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 10px 15px;
+    margin: 0;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
+#carritoDropdown .dropdown-menu {
+    min-width: 300px;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+#carritoDropdown .table {
+    margin-bottom: 0;
+    width: 100%;
+    table-layout: auto;
+}
