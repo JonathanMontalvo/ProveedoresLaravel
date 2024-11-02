@@ -72,9 +72,9 @@
                             style="width: 30px; height: 30px;">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="carritoDropdown"
-                        style="min-width: 500px;">
+                        style="min-width: 600px;">
                         <div class="table-responsive">
-                            <table class="table table-sm">
+                            <table id="carritoTable" class="table table-sm">
                                 <thead>
                                     <tr>
                                         <th>Imagen</th>
@@ -90,7 +90,9 @@
                                 </tbody>
                             </table>
                         </div>
-                        <a href="#" class="btn btn-danger btn-sm btn-block">Vaciar Carrito</a>
+                        <h5 id="carrito-total">Total a pagar: $0.00</h5>
+                        <a id="pay-carrito" class="btn btn-success btn-sm btn-block">Pagar Carrito</a>
+                        <a id="remove-all" class="btn btn-danger btn-sm btn-block">Vaciar Carrito</a>
                     </div>
                 </li>
             </ul>

@@ -29,7 +29,8 @@
                             <p class="card-text"><strong>Dimensiones:</strong> {{ $product['dimensiones'] }}</p>
                             <p class="card-text"><strong>Capacidad:</strong> {{ $product['capacidad'] }} kg</p>
                             <p class="card-text"><strong>Marca:</strong> {{ $product['marca'] }}</p>
-                            <a href="#" class="btn btn-primary">Agregar al Carrito</a>
+                            <button class="btn btn-primary add-to-cart" data-id="{{ $product['id'] }}"
+                                id="product-{{ $product['id'] }}">Agregar al Carrito</button>
                         </div>
                     </div>
                 </div>
@@ -40,6 +41,8 @@
     <!-- Enlace a jQuery y Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Enlace a tu archivo JavaScript personalizado -->
+    <script src="{{ asset('assets/js/carrito.js') }}"></script>
 </body>
 
 </html>
