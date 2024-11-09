@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -112,6 +112,18 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('DB_DSN', 'mongodb+srv://Pruebas845:vc0o3kOIrZjddHE0@clusterprueba.afcwn.mongodb.net/Proveedores?retryWrites=true&w=majority'),
+            'database' => env('DB_DATABASE', 'Proveedores'),
+            'options' => [
+                'database' => env('DB_AUTHENTICATION_DATABASE', 'admin'), // Base de datos de autenticación
+            ],
+        ],
+
+
+
+
     ],
 
     /*
@@ -124,12 +136,12 @@ return [
     | the migrations on disk haven't actually been run on the database.
     |
     */
-
+    /*
     'migrations' => [
-        'table' => 'migrations',
-        'update_date_on_publish' => true,
+        //'table' => 'migrations',
+        //'update_date_on_publish' => true,
     ],
-
+    */
     /*
     |--------------------------------------------------------------------------
     | Redis Databases
@@ -140,14 +152,14 @@ return [
     | such as Memcached. You may define your connection settings here.
     |
     */
-
+    /*
     'redis' => [
 
         'client' => env('REDIS_CLIENT', 'phpredis'),
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
@@ -169,5 +181,5 @@ return [
         ],
 
     ],
-
+    */
 ];
