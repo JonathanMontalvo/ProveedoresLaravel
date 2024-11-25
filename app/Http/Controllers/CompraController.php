@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Exception;
 use GuzzleHttp\Client;
 use Log;
+use DateTime;
+use DateTimeZone;
 
 class CompraController extends Controller
 {
@@ -35,9 +37,9 @@ class CompraController extends Controller
             $totalGeneral = 0;
 
             foreach ($data as $item) {
-                $idProducto = $item['id_producto']['$oid'];
-                $productosComprados = $item['productos_comprados'];
-                $fechaCompra = $item['fecha_compra']['$date'];
+                $idProducto = $item['id_Producto']['$oid'];
+                $productosComprados = $item['productos_Comprados'];
+                $fechaCompra = $item['fecha_Compra']['$date'];
 
                 // Verificar si el producto existe en el inventario
                 $productoEncontrado = false;
@@ -45,7 +47,7 @@ class CompraController extends Controller
                     $itemIdProducto = (string) $inventarioItem['id_Producto'];
                     if ($itemIdProducto === $idProducto) {
                         $productoEncontrado = true;
-                        $cantidadInventario = (float) $inventarioItem['Cantidad'];
+                        $cantidadInventario = (float) $inventarioItem['cantidad'];
                         break;
                     }
                 }
@@ -82,8 +84,8 @@ class CompraController extends Controller
                 // Agregar el producto vendido a la lista
                 $ventasData[] = [
                     'id_Producto' => $producto['_id'],
-                    'Cantidad' => $productosComprados,
-                    'Total' => $total
+                    'cantidad' => $productosComprados,
+                    'total' => $total
                 ];
 
                 // Preparar la actualización del inventario
@@ -94,12 +96,14 @@ class CompraController extends Controller
                 ];
             }
 
+            // Obtener la fecha actual en el formato adecuado
+            $fechaC = (new DateTime('now', new DateTimeZone('America/Mexico_City')))->format('Y-m-d\TH:i:s.vP');
             // Crear el registro de la venta unificada
             $ventaDataUnificada = [
-                'Productos_Vendidos' => $ventasData,
-                'Status_Pago' => 1, // 1 = reazlizado 2 = cancelada
-                'Fecha_Venta' => $fechaCompra,
-                'Total' => $totalGeneral
+                'productos_Vendidos' => $ventasData,
+                'status_Pago' => 1, // 1 = reazlizado 2 = cancelada
+                'fecha_Venta' => $fechaC,
+                'total' => $totalGeneral
             ];
 
             // Realizar la inserción de la venta y obtener el ID
@@ -128,7 +132,7 @@ class CompraController extends Controller
             return response()->json([
                 'resultado' => 1,
                 'mensaje' => 'Compra realizada exitosamente',
-                'id_compra' => (string) $idCompra
+                'id_compra' => $idCompra
             ]);
 
         } catch (Exception $e) {
