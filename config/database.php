@@ -114,8 +114,8 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_DSN', 'mongodb+srv://Pruebas845:vc0o3kOIrZjddHE0@clusterprueba.afcwn.mongodb.net/Proveedores?retryWrites=true&w=majority'),
-            'database' => env('DB_DATABASE', 'Proveedores'),
+            'dsn' => env('DB_DSN', 'mongodb+srv://proveedores:0KfhA5BB6l0xstku@cluster.yix4x.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster'),
+            'database' => env('DB_DATABASE', 'test'),
             'options' => [
                 'database' => env('DB_AUTHENTICATION_DATABASE', 'admin'), // Base de datos de autenticación
             ],
